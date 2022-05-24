@@ -13,7 +13,7 @@ require_once "./app/core/Db.php";
             return $result;
         }
         public function  addProduct($username,$password,$fulllname,$birtday,$email,$phone,$address,$office)
-        {  $query = "INSERT INTO `users` (`id`, `username`, `passs`, `fullname`, `birtday`, `email`, `phone`, `address`, `office`) VALUES (NULL, '$username', '$password', '$fulllname', '$birtday', '$email', '$phone', '$address', '$office')";
+        {  $query = "INSERT INTO `users` (`product_id`, `product_name`, `product_description`, `product_published`, `product_avatar`, `product_img1`, `product_img2`, `product_img3`, `product_price`,`product_brand`,`product_category`) VALUES (NULL, '$username', '$password', '$fulllname', '$birtday', '$email', '$phone', '$address', '$office')";
               $insert_row = $this->db->insert($query);
               return  $insert_row ;
         }
@@ -25,9 +25,7 @@ require_once "./app/core/Db.php";
 
         }
         public function countProduct(){
-            $query = "SELECT count(product_id) from products";
-            $total_records = $this->db->select($query);
-            return   $total_records ["num_rows"];
+          
 
         }
         public function update_product($data,$files, $productName){
@@ -87,6 +85,7 @@ require_once "./app/core/Db.php";
 					$alert = "<span class='text-success >Update không thành công</span";
 					return $alert;	
 				}
+            }
 			
 			
         

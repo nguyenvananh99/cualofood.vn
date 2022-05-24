@@ -1,5 +1,5 @@
 <?php require_once "./app/views/layouts/header.php"; ?>
-
+<form action="" method="post">
 <div class="wrapper col-sm-8 offset-3">
     <!-- header  -->
     <div class="content-header clearfix">
@@ -9,12 +9,12 @@
                     Thêm một sản phẩm mới
                 </font>
             </font>
-    <small class="btn btn-info">
+    <small class="btn btn-secondary">
         <i class="fas fa-arrow-circle-left text-light"></i>
             <a href="index">
                 <font class=" text-light" style="vertical-align: inherit;">
                     <font style="vertical-align: inherit;">
-                        Quay lại danh sách sản phẩm
+                        Quay lại danh sách
                     </font>
                 </font>
             </a>
@@ -40,6 +40,7 @@
     <!-- end header  -->
 
     <!-- Content  -->
+
     <div class="content card card-secondary card-outline">
     <div class="card-header with-border clearfix">
         <div class="card-title">
@@ -52,12 +53,14 @@
             </div></div>
         <div class="card-body">
             <div class="form-group row">
-                    <div class="col-md-3">
-                    <div class="label-wrapper"><label class="col-form-label" for="product_name">Tên sản phẩm</label>
+                <div class="col-md-3">
+                    <div class="label-wrapper">
+                        <label class="col-form-label" for="product_name">Tên sản phẩm</label>
                     </div>
-                    </div>
+                </div>
                     <div class="col-md-9">
-                    <div class="input-group input-group-required"><input class="form-control text-box single-line" data-val="true" data-val-length="'Name' must be between 0 and 400 characters." data-val-length-max="400" data-val-length-min="0" data-val-required="Please provide a name." id="product_name" name="product_name" type="text" value=""><div class="input-group-btn"><span class="required">*</span></div></div>
+                    <div class="input-group input-group-required">
+                        <input class="form-control text-box single-line" data-val-required="Please provide a name." id="product_name" name="product_name" type="text" value=""><div class="input-group-btn"><span class="required">*</span></div></div>
                     <span class="field-validation-valid" data-valmsg-for="product_name" data-valmsg-replace="true"></span>
                     </div>
             </div>
@@ -90,17 +93,82 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <input type="checkbox" name="" class="check-box" id="">
-                    
+                    <input type="checkbox" name="" class="check-box" id="">           
                 </div>
-    
-
-
+              </div>
+              <div class="form-group row">
+                  <div class="col-md-3">
+                  <div class="label-wrapper">
+                      <label for="formFileMultiple" class="form-label"> Ảnh đại diện</label>
+                  </div>
+                  </div>
+                  <div class="col-md-9">
+                     <input class="form-control" type="file" id="product_avatar" multiple />
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <div class="col-md-3">
+                  <div class="label-wrapper">
+                      <label for="product_img1" class="form-label"> Hình 1</label>
+                  </div>
+                  </div>
+                  <div class="col-md-9">
+                     <input class="form-control" type="file" id="product_img1" multiple />
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <div class="col-md-3">
+                  <div class="label-wrapper">
+                      <label for="product_img2" class="form-label"> Hình 2</label>
+                  </div>
+                  </div>
+                  <div class="col-md-9">
+                     <input class="form-control" type="file" id="product_img2" multiple />
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <div class="col-md-3">
+                  <div class="label-wrapper">
+                      <label for="product_img3" class="form-label"> Hình 3</label>
+                  </div>
+                  </div>
+                  <div class="col-md-9">
+                     <input class="form-control" type="file" id="product_img3" multiple />
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <div class="col-md-3">
+                        <div class="lable-wrapper">
+                            <label for="product_brand">Thương hiệu</label>
+                        </div>
+                  </div>
+                  <div class="col-md-9">
+                      <select class="form-control" name="product_brand" id="product_brand">
+                            <option value="">Thương hiệu 1</option>
+                            <option value="">Thương hiệu 2</option>
+                            <option value="">Thương hiệu 3</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="form-group row">
+                  <div class="col-md-3">
+                        <div class="lable-wrapper">
+                            <label for="product_brand">Danh mục</label>
+                        </div>
+                  </div>
+                  <div class="col-md-9">
+                      <select class="form-control" name="product_brand" id="product_brand">
+                            <option value="">Danh mục 1</option>
+                            <option value="">Danh mục 2</option>
+                            <option value="">Danh mục 3</option>
+                      </select>
+                  </div>
               </div>
 
         </div>
     </div>
     <!-- End card 1  -->
+<!-- End product infomation  -->
 
     <!-- Card 2  -->
     <div class="content card card-secondary card-outline">
@@ -124,15 +192,8 @@
                     <span class="field-validation-valid" data-valmsg-for="Price" data-valmsg-replace="true"></span>
                     </div>
               </div>
-              <div class="form-group row advanced-setting parent-setting parent-setting-advanced" id="group-required-other-products">
-                    <div class="col-md-3">
-                    <div class="label-wrapper"><label class="col-form-label" for="RequireOtherProducts"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tạm hết hàng</font></font></label><div title="" data-toggle="tooltip" class="ico-help" data-original-title="Check if the product requires adding other products to the cart."></div></div>
-                    </div>
-                    <div class="col-md-9">
-                    <input class="check-box" data-val="true" data-val-required="The Require other products field is required." id="RequireOtherProducts" name="RequireOtherProducts" type="checkbox" value="true">
-                    <span class="field-validation-valid" data-valmsg-for="RequireOtherProducts" data-valmsg-replace="true"></span>
-                    </div>
-              </div>
+              
+         
         
             
             </div>
@@ -140,6 +201,10 @@
       </div>
     </div>
 
+    </form>
+
+    <!-- Product infomation  -->
+    
     <!-- End card 2  -->
 
     <!-- End content  -->
