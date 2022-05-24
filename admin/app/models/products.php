@@ -12,8 +12,8 @@ require_once "./app/core/Db.php";
             $result = $this->db->select($query);
             return $result;
         }
-        public function  addProduct($username,$password,$fulllname,$birtday,$email,$phone,$address,$office)
-        {  $query = "INSERT INTO `users` (`product_id`, `product_name`, `product_description`, `product_published`, `product_avatar`, `product_img1`, `product_img2`, `product_img3`, `product_price`,`product_brand`,`product_category`) VALUES (NULL, '$username', '$password', '$fulllname', '$birtday', '$email', '$phone', '$address', '$office')";
+        public function  addProduct($productName, $productDescription,$productPrice)
+        {  $query = "INSERT INTO `products` (`product_id`,`product_name`, `product_description`, `product_price`) VALUES (NULL,'$productName', '$productDescription', '$productPrice')";
               $insert_row = $this->db->insert($query);
               return  $insert_row ;
         }
@@ -24,7 +24,17 @@ require_once "./app/core/Db.php";
            return $delete_row;
 
         }
-        public function countProduct(){
+        public function countProduct()
+		{
+			$query =  "SELECT * FROM products";
+			$get_row = $this->db->select($query);
+			$num_row = mysqli_num_rows($get_row);
+			echo $num_row;
+			
+
+			
+
+
           
 
         }

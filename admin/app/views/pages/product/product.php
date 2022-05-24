@@ -143,7 +143,8 @@
                         ?>
                            
                     </td>
-                       <td><?php echo $result['product_avatar']; ?></td>
+                       <td><?php echo $result['product_avatar'];
+                        ?></td>
                        <td><?php echo $result['product_name']; ?></td>
                        <td><?php echo $result['product_description']; ?></td>
                        <td><?php echo $result['product_price']; ?></td>
