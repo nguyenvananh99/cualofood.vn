@@ -110,10 +110,7 @@
         </div>
     </div>
 </div>
-
-
 </form>
-
 <!-- End search bar  -->
 
 <!-- Table  -->
@@ -140,13 +137,23 @@
                    ?>
                    <tr>
                        <td><input type="checkbox" name="" id=""></td>
-                       <td><?php echo $result['product_id']; ?></td>
+                       <td><?php echo $result['product_id'];
+                        echo $abc = $prM->countProduct();
+                           
+                        ?>
+                           
+                    </td>
                        <td><?php echo $result['product_avatar']; ?></td>
                        <td><?php echo $result['product_name']; ?></td>
                        <td><?php echo $result['product_description']; ?></td>
                        <td><?php echo $result['product_price']; ?></td>
                        <td><?php echo $result['product_number']; ?></td>
-                       <td><?php echo $result['product_published']; ?></td>
+                       <td><?php if($result['product_published']==1){
+                            echo '<i class="fas fa-check true-icon" nop-value="true"></i>';
+                            } 
+                            else{
+                                echo '<i class="fas fa-times false-icon" nop-value="false"></i>';
+                            }?></td>
                        <td>
                            <a class="btn btn-default" href="Edit/1"><i class="fas fa-pencil-alt"></i>Edit</a>
                        </td>
@@ -163,7 +170,65 @@
 <!-- End table  -->
 
 <!-- page  -->
-
+<div class="row margin-t-5">
+    <div class="col-lg-5 col-xs-12">
+        <div class="float-lg-left">
+            <div class="dataTables_paginate paging_simple_numbers" id="products-grid_paginate">
+                <ul class="pagination">
+                    <li class="paginate_button page-item previous disabled" id="products-grid_previous">
+                        <a href="#" aria-controls="products-grid" data-dt-idx="0" tabindex="0" class="page-link">
+                        <i class="fas fa-caret-left"></i>
+                        </a>
+                    </li>
+                    <li class="paginate_button page-item active">
+                        <a href="#" aria-controls="products-grid" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+                    </li>
+                    <li class="paginate_button page-item ">
+                        <a href="#" aria-controls="products-grid" data-dt-idx="2" tabindex="0" class="page-link">2</a>
+                    </li>
+                    <li class="paginate_button page-item ">
+                        <a href="#" aria-controls="products-grid" data-dt-idx="3" tabindex="0" class="page-link">3</a>
+                    </li>
+                    <li class="paginate_button page-item next" id="products-grid_next">
+                        <a href="#" aria-controls="products-grid" data-dt-idx="4" tabindex="0" class="page-link">
+                        <i class="fas fa-caret-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-12">
+        <div class="text-center">
+            <div class="dataTables_length" id="products-grid_length">
+                <label>Show <select name="products-grid_length" aria-controls="products-grid" class="custom-select custom-select-sm form-control form-control-sm">
+                    <option value="7">5</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select> 
+                items</label>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-12">
+        <div class="float-lg-right text-center">
+            <div class="dataTables_info" id="products-grid_info" role="status" aria-live="polite">1-15 of 45 items</div>
+        </div>
+    </div>
+    <div class="col-lg-1 col-xs-12">
+        <div class="float-lg-right text-center data-tables-refresh">
+            <div class="dt-buttons btn-group flex-wrap">
+                <button class="btn btn-secondary" tabindex="0" aria-controls="products-grid" type="button">
+                    <span>
+                        <i class="fas fa-sync-alt" style="padding-left: 5px"></i>
+                    </span>
+                </button> 
+            </div>
+        </div>
+    </div>
+</div>
 
 <!--end  page -->
     
