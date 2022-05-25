@@ -15,11 +15,14 @@ require_once "./app/core/Db.php";
  $prM = new products();
  $pCategoryM  = new CategoryPost();
  $brM = new brands();
+ $pageM = new paginations();
  $ctM= new categoryModel();
  $orM = new orderModel();
  $pM = new posts();
  $UserM = new users();
  $CustomerM = new customers();
+
+
 
 
 ?>

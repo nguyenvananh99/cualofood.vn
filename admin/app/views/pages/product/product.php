@@ -138,12 +138,15 @@
                    <tr>
                        <td><input type="checkbox" name="" id=""></td>
                        <td><?php echo $result['product_id'];
-                        echo $abc = $prM->countProduct();
+                        // echo $abc = $prM->countProduct();
+                      
                            
                         ?>
                            
                     </td>
                        <td><?php echo $result['product_avatar'];
+                        $pageM-> count_reconds('products');
+                        // $pageM->page_number('product','5');
                         ?></td>
                        <td><?php echo $result['product_name']; ?></td>
                        <td><?php echo $result['product_description']; ?></td>
@@ -170,7 +173,7 @@
 
 <!-- End table  -->
 
-<!-- page  -->
+
 <div class="row margin-t-5">
     <div class="col-lg-5 col-xs-12">
         <div class="float-lg-left">

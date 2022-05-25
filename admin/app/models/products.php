@@ -30,13 +30,6 @@ require_once "./app/core/Db.php";
 			$get_row = $this->db->select($query);
 			$num_row = mysqli_num_rows($get_row);
 			echo $num_row;
-			
-
-			
-
-
-          
-
         }
         public function update_product($data,$files, $productName){
 			
