@@ -1,28 +1,29 @@
 <?php 
-require_once "./app/core/Db.php";
-    class paginations extends Database {
-        private $db;
-       
-        
-        
+/*
+Đây là pagination models
+Thực hiện quá trình xử lý phân trang trong dự án
+*/
 
+require_once "./app/core/Db.php";
+    class paginations extends Database
+    {
+        private $db;
         public function __construct()
         {
             $this->db = new Database();        
         }
-    
-    public function count_reconds($table){
-        $query = "SELECT * FROM $table";
-        $total_row = mysqli_num_rows($this->db->select($query));
-        echo $total_row;       
+        // Hàm đếm số lượng cột có trong bảng của cơ sở dữ liệu (1)
+        public function count_reconds($table)
+        {
+            $query = "SELECT * FROM $table";
+            $total_row = mysqli_num_rows($this->db->select($query));
+                
+        }
+        // Hàm tính tổng số trang thông qua số lượng cột đã đếm ở(1)
+        public function page_number($table)
+        {
+          echo $this->count_reconds($table); 
+            
+        }
     }
-    public function page_number($table,$limit){
-        $this ->total_reconds =  $this->count_reconds($table);
-        $total_page =  ceil($total_reconds/$limit);
-        return  $total_page;
-
-    }
-}
-
-
 ?>
