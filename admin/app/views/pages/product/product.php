@@ -145,8 +145,8 @@
                            
                     </td>
                        <td><?php echo $result['product_avatar'];
-                        // $pageM-> count_reconds('products');
-                        $pageM->page_number('products');
+                        // echo $pageM-> count_reconds('products');
+                        echo $pageM->page_number('products',4);
                         ?></td>
                        <td><?php echo $result['product_name']; ?></td>
                        <td><?php echo $result['product_description']; ?></td>

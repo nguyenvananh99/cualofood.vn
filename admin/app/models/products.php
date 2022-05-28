@@ -9,8 +9,23 @@ require_once "./app/core/Db.php";
         public function getProduct()
         {
             $query = "SELECT * FROM products";
-            $result = $this->db->select($query);
-            return $result;
+            $total_row = mysqli_num_rows($this->db->select($query));
+            $total_page = ceil($total_row/5);
+            $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+            if ($current_page > $total_page){
+                $current_page = $total_page;
+            }
+            else if ($current_page < 1){
+                $current_page = 1;
+            }
+            // Tìm Start
+            $start = ($current_page - 1) * 5;
+			$query1 ="SELECT * FROM products LIMIT $start,5";
+			$result = $this->db->select($query1);
+			$page = $_GET['page'];
+			echo $page;
+;			return $result;
+
         }
         public function  addProduct($productName, $productDescription,$productPrice)
         {  $query = "INSERT INTO `products` (`product_id`,`product_name`, `product_description`, `product_price`) VALUES (NULL,'$productName', '$productDescription', '$productPrice')";
