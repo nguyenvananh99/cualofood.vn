@@ -12,6 +12,16 @@ class Dashboard extends Controller{
   {
     $this->view('dashboard','dashboard',[]);
   }
+  public function detail($id,$slug)
+  {
+    echo 'ID sản phẩm:'.$id.'';
+    echo 'Slug sản phẩm:'.$slug.'';
+  }
+  public function search()
+  {
+    $keyword = $_GET['keyword'];
+    echo 'Từ khoá còn tìm:'.$keyword.'';
+  }
 }
 
 ?>
