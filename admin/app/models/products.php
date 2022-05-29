@@ -23,8 +23,7 @@ require_once "./app/core/Db.php";
 			$query1 ="SELECT * FROM products LIMIT $start,5";
 			$result = $this->db->select($query1);
 			$page = $_GET['page'];
-			echo $page;
-;			return $result;
+			return $result;
 
         }
         public function  addProduct($productName, $productDescription,$productPrice)
