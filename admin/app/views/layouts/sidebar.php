@@ -1,9 +1,9 @@
+<!-- Sidebar content  -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-
-<a href="/Admin" class="brand-link navbar-dark logo-switch">
-<img src="http://localhost/cualofood/admin/public/img/logo34.png" alt="logo.png" class="brand-image-xl logo-xl">
-<img src="http://localhost/cualofood/admin/public/img/logo-mini.png" alt="logo.png" class="brand-image-xs logo-xs">
-</a>
+    <a href="/Admin" class="brand-link navbar-dark logo-switch">
+        <img src="http://localhost/cualofood/admin/public/img/logo34.png" alt="logo.png" class="brand-image-xl logo-xl">
+        <img src="http://localhost/cualofood/admin/public/img/logo-mini.png" alt="logo.png" class="brand-image-xs logo-xs">
+    </a>
 <div class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-transition"><div class="os-resize-observer-host observed"><div class="os-resize-observer" style="left: 0px; right: auto;"></div></div><div class="os-size-auto-observer observed" style="height: calc(100% + 1px); float: left;"><div class="os-resize-observer"></div></div><div class="os-content-glue" style="margin: 0px -8px; width: 249px; height: 299px;"></div><div class="os-padding"><div class="os-viewport os-viewport-native-scrollbars-invisible" style="overflow-y: scroll;"><div class="os-content" style="padding: 0px 8px; height: 100%; width: 100%;">
 <div class="sidebar-form">
 <div id="search-box">
@@ -28,13 +28,13 @@ Sản phẩm
 </a>
 <ul class="nav nav-treeview" style="display: none;">
 <li class="nav-item">
-<a href="product/index" class="nav-link">
+<a href="<?php echo BASE_URL?>product/index" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Danh sách sản phẩm</font></font></p>
 </a>
 </li>
 <li class="nav-item">
-<a href="../productCategory/index" class="nav-link">
+<a href="<?php echo BASE_URL?>product/Category" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thể loại</font></font></p>
 </a>

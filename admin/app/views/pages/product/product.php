@@ -130,9 +130,22 @@
                <th>Thao tác</th>
             </thead>
                <tbody>
+       
                    <?php
-                        $data = $prM->getProduct();
+                      
+                        $total_page =  $prM->total_pages();
+                         $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+                         if ($current_page > $total_page){
+                            $current_page = $total_page;
+                        }
+                        else if ($current_page < 1){
+                            $current_page = 1;
+                        }
+                        // Tìm Start
+                        $start = ($current_page - 1) * 5;
+                        $data = $prM->getProduct($start);
                         while($result = $data->fetch_assoc()){
+
                             
                    ?>
                    <tr>
@@ -145,8 +158,6 @@
                            
                     </td>
                        <td><?php echo $result['product_avatar'];
-                        // echo $pageM-> count_reconds('products');
-                        echo $pageM->page_number('products',4);
                         ?></td>
                        <td><?php echo $result['product_name']; ?></td>
                        <td><?php echo $result['product_description']; ?></td>
@@ -172,71 +183,85 @@
 </div>
 
 <!-- End table  -->
+<?php
+
+echo '
+			<div class="row margin-t-5"><div class="col-lg-5 col-xs-12">
+			<div class="float-lg-left">
+				<div class="dataTables_paginate paging_simple_numbers" id="products-grid_paginate">
+					<ul class="pagination">';
+			if ($current_page > 1 && $total_page > 1){
+				echo '<li class="paginate_button page-item previous " id="products-grid_previous"><a href="?page='.($current_page-1).'" aria-controls="products-grid" data-dt-idx="0" tabindex="0" class="page-link"><i class="fas fa-caret-left"></i></a></li>';
+			}
+			 
+			// Lặp khoảng giữa
+			for ($i = 1; $i <= $total_page; $i++){
+				// Nếu là trang hiện tại thì hiển thị thẻ span
+				// ngược lại hiển thị thẻ a
+				if ($i == $current_page){
+					echo ' <li class="paginate_button page-item active"><a href="" aria-controls="products-grid" data-dt-idx="1" tabindex="0" class="page-link">'.($i).'</a></li>';
+				}
+				else{
+					echo '<li class="paginate_button page-item "><a href="?page='.($i).'"class="page-link">'.$i.'</a> </li>';
+				}
+			}
+			 
+			// nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+			if ($current_page < $total_page && $total_page > 1){
+				echo '<li class="paginate_button page-item next" id="products-grid_next">
+				<a href="?page='.($current_page+1).'" aria-controls="products-grid" data-dt-idx="4" tabindex="0" class="page-link">
+				<i class="fas fa-caret-right"></i>
+				</a>
+			</li>';
+			}
+			echo '	</ul>
+			</div>
+		</div>
+		</div>
+		<div class="col-lg-3 col-xs-12">
+				<div class="text-center">
+					<div class="dataTables_length" id="products-grid_length">
+                    <form method="POST" action="">
+						<label>Show 
+                        <select name="start_select" aria-controls="products-grid" class="custom-select custom-select-sm form-control form-control-sm">
+							<option value="7">5</option>
+							<option value="15">15</option>
+							<option value="20">20</option>
+							<option value="50">50</option>
+							<option value="100">100</option>
+						</select> 
+						items</label>
+                    </form>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 col-xs-12">
+				<div class="float-lg-right text-center">
+					<div class="dataTables_info" id="products-grid_info" role="status" aria-live="polite">1-15 of 45 items</div>
+				</div>
+			</div>
+			<div class="col-lg-1 col-xs-12">
+				<div class="float-lg-right text-center data-tables-refresh">
+					<div class="dt-buttons btn-group flex-wrap">
+						<button class="btn btn-secondary" tabindex="0" aria-controls="products-grid" type="button">
+							<span>
+								<i class="fas fa-sync-alt" style="padding-left: 5px"></i>
+							</span>
+						</button> 
+					</div>
+				</div>
+			</div>
+			</div>';
 
 
-<div class="row margin-t-5">
-    <div class="col-lg-5 col-xs-12">
-        <div class="float-lg-left">
-            <div class="dataTables_paginate paging_simple_numbers" id="products-grid_paginate">
-                <ul class="pagination">
-                    <li class="paginate_button page-item previous disabled" id="products-grid_previous">
-                        <a href="#" aria-controls="products-grid" data-dt-idx="0" tabindex="0" class="page-link">
-                        <i class="fas fa-caret-left"></i>
-                        </a>
-                    </li>
-                    <li class="paginate_button page-item active">
-                        <a href="#" aria-controls="products-grid" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                    </li>
-                    <li class="paginate_button page-item ">
-                        <a href="#" aria-controls="products-grid" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-                    </li>
-                    <li class="paginate_button page-item ">
-                        <a href="#" aria-controls="products-grid" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-                    </li>
-                    <li class="paginate_button page-item next" id="products-grid_next">
-                        <a href="#" aria-controls="products-grid" data-dt-idx="4" tabindex="0" class="page-link">
-                        <i class="fas fa-caret-right"></i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-xs-12">
-        <div class="text-center">
-            <div class="dataTables_length" id="products-grid_length">
-                <label>Show <select name="products-grid_length" aria-controls="products-grid" class="custom-select custom-select-sm form-control form-control-sm">
-                    <option value="7">5</option>
-                    <option value="15">15</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                </select> 
-                items</label>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-xs-12">
-        <div class="float-lg-right text-center">
-            <div class="dataTables_info" id="products-grid_info" role="status" aria-live="polite">1-15 of 45 items</div>
-        </div>
-    </div>
-    <div class="col-lg-1 col-xs-12">
-        <div class="float-lg-right text-center data-tables-refresh">
-            <div class="dt-buttons btn-group flex-wrap">
-                <button class="btn btn-secondary" tabindex="0" aria-controls="products-grid" type="button">
-                    <span>
-                        <i class="fas fa-sync-alt" style="padding-left: 5px"></i>
-                    </span>
-                </button> 
-            </div>
-        </div>
-    </div>
-</div>
+?>
+<?php
+   if(isset($_POST["start_select"])){
+      echo 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
+   }
+?>
 
 <!--end  page -->
     
 </div>
-
-
 <?php require_once "./app/views/layouts/footer.php"; ?>

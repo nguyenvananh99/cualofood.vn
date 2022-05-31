@@ -1,46 +1,57 @@
 <?php
-
+// Product controller 
+// Thực hiện xử lý và liên kết với model và view của product 
 require_once "./app/core/Controller.php";
     class product extends Controller{
         public function __construct()
         {
           
         }
-        public function index(){
+        // Trang chủ sản phẩm 
+        public function index()
+        {
             $this->view('product','product',[]);
-           
-
         }
-        public function addProduct(){
+        public function viewProduct()
+        {
             $this->view('add-product','product',[]);
-           
-
         }
-        public function review(){
+        // Thêm sản phẩm 
+        public function addProduct()
+        {
+            $this->view('add-product','product',[]);
+        }
+        // Đánh giá sản phẩm 
+        public function review()
+        {
             $this->view('review','product',[]);
-           
-
         }
-        public function keyword(){
+        // Từ khoá sản phẩm 
+        public function keyword()
+        {
             $this->view('keyword','product',[]);
-           
-
         }
-        public function property(){
+        // Thuộc tính sản phẩm
+        public function property()
+        {
             $this->view('properties','product',[]);
-           
-
         }
-        public function editProduct(){
+        // Sửa sản phẩm 
+        public function editProduct()
+        {
             $this->view('edit-product','product',[]);
-           
-
         }
+        // Chuyên mục sản phẩm 
+        public function Category()
+        {
+            $this->view('productCategory','category',[]);
+        }
+        // Thêm chuyên mục sản phẩm
+        public function addCategory()
+        {
+            $this->view('add-productCategory','category',[]);
+        }
+   
 
-        
-
-       
-    }
-  
-    
+}
 ?>

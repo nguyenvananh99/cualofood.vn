@@ -6,26 +6,27 @@ require_once "./app/core/Db.php";
         {
             $this->db = new Database();
         }
-        public function getProduct()
-        {
-            $query = "SELECT * FROM products";
+		public function total_rows(){
+			$query = "SELECT * FROM products";
             $total_row = mysqli_num_rows($this->db->select($query));
-            $total_page = ceil($total_row/5);
-            $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-            if ($current_page > $total_page){
-                $current_page = $total_page;
-            }
-            else if ($current_page < 1){
-                $current_page = 1;
-            }
-            // Tìm Start
-            $start = ($current_page - 1) * 5;
+			return   $total_row;
+		}
+		public function total_pages(){
+			$total_row = $this->total_rows();
+			$total_page = ceil($total_row/5);
+			return $total_page;
+		}
+        public function getProduct($start)
+        {
+
 			$query1 ="SELECT * FROM products LIMIT $start,5";
 			$result = $this->db->select($query1);
-			$page = $_GET['page'];
+			$page = isset($_GET['page']) ?$_GET['page'] : '';
 			return $result;
 
         }
+	
+		
         public function  addProduct($productName, $productDescription,$productPrice)
         {  $query = "INSERT INTO `products` (`product_id`,`product_name`, `product_description`, `product_price`) VALUES (NULL,'$productName', '$productDescription', '$productPrice')";
               $insert_row = $this->db->insert($query);

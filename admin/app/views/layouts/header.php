@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <?php
+define ('BASE_URL','http://localhost/cualofood/admin/');
 require_once "./app/core/Db.php";
   require_once "./app/lib/session.php";
   require_once "./app/helpers/format.php";
@@ -16,7 +17,7 @@ require_once "./app/core/Db.php";
  $pCategoryM  = new CategoryPost();
  $brM = new brands();
  $pageM = new paginations();
- $ctM= new categoryModel();
+ $pctM= new productCategory();
  $orM = new orderModel();
  $pM = new posts();
  $UserM = new users();
