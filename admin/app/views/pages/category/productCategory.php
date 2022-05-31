@@ -15,7 +15,7 @@ require_once "./app/views/layouts/header.php";
       </font>
     </h1>
     <div class="float-right">
-      <a class="btn btn-primary" href="/Admin/Category/Create">
+      <a class="btn btn-primary" href="<?php echo BASE_URL?>/product/addCategory">
         <i class="fas fa-plus-square">
         </i>
         <font style="vertical-align: inherit;">

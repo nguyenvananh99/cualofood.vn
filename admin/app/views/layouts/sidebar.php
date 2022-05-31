@@ -28,7 +28,7 @@ Sản phẩm
 </a>
 <ul class="nav nav-treeview" style="display: none;">
 <li class="nav-item">
-<a href="<?php echo BASE_URL?>product/index" class="nav-link">
+<a href="<?php echo BASE_URL?>san-pham" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Danh sách sản phẩm</font></font></p>
 </a>
@@ -40,7 +40,7 @@ Sản phẩm
 </a>
 </li>
 <li class="nav-item">
-<a href="../brand/index" class="nav-link">
+<a href="<?php echo BASE_URL?>brand/index" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thương hiệu</font></font></p>
 </a>
@@ -52,7 +52,7 @@ Sản phẩm
 </a>
 </li>
 <li class="nav-item">
-<a href="../product/keyword" class="nav-link">
+<a href="<?php echo BASE_URL?>san-pham/tu-khoa" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thẻ sản phẩm</font></font></p>
 </a>

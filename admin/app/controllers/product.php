@@ -27,6 +27,11 @@ require_once "./app/core/Controller.php";
             $this->view('review','product',[]);
         }
         // Từ khoá sản phẩm 
+        public function addKeyword()
+        {
+            $this->view('add-keyword','product',[]);
+        }
+        // Thêm từ khoá sản phẩm 
         public function keyword()
         {
             $this->view('keyword','product',[]);
@@ -51,6 +56,20 @@ require_once "./app/core/Controller.php";
         {
             $this->view('add-productCategory','category',[]);
         }
+        // Brand sản phẩm 
+        public function brand(){
+            $this->view('brand','brand',[]);
+         }
+         public function addBrand(){
+          $this->view('add-brand','brand',[]);
+        }
+        public function deleteBrand(){
+    
+        }
+        public function updateBrand(){
+    
+        }
+    
    
 
 }
