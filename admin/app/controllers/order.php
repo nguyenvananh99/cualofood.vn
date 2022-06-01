@@ -17,6 +17,16 @@ Class order extends Controller{
        
 
     }
+    public function shipment(){
+        $this->view('shipment','order',[]);
+       
+
+    }
+    public function return(){
+        $this->view('return','order',[]);
+       
+
+    }
 
 
 

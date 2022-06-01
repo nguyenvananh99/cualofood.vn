@@ -15,8 +15,14 @@ require_once "./app/core/Controller.php";
         public function deleteCustomer(){
             $this->view('delete-customer','customer', []);
         }
+        public function editCustomer(){
+            $this->view('edit-customer','customer', []);
+        }
         public function profileCustomer(){
             $this->view('profile','customer', []);
+        }
+        public function onlineCustomer(){
+            $this->view('online-customer','customer', []);
         }
     }
   

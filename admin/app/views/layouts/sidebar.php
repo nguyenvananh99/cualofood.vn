@@ -100,25 +100,19 @@ Bán hàng
 <li class="nav-item">
 <a href="/Admin/Order/List" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đơn hàng</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Danh sách đơn hàng</font></font></p>
 </a>
 </li>
 <li class="nav-item">
 <a href="/Admin/Order/ShipmentList" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Lô hàng</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vận chuyển</font></font></p>
 </a>
 </li>
 <li class="nav-item">
 <a href="/Admin/ReturnRequest/List" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Yêu cầu trả lại</font></font></p>
-</a>
-</li>
-<li class="nav-item">
-<a href="/Admin/RecurringPayment/List" class="nav-link">
-<i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thanh toán định kỳ</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Yêu cầu trả hàng</font></font></p>
 </a>
 </li>
 <li class="nav-item">
@@ -127,12 +121,7 @@ Bán hàng
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thẻ quà tặng</font></font></p>
 </a>
 </li>
-<li class="nav-item">
-<a href="/Admin/ShoppingCart/CurrentCarts" class="nav-link">
-<i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Giỏ hàng và danh sách yêu thích</font></font></p>
-</a>
-</li>
+
 </ul>
 </li>
 <li class="nav-item has-treeview">
@@ -145,21 +134,21 @@ Khách hàng
 </a>
 <ul class="nav nav-treeview" style="display: none;">
 <li class="nav-item">
-<a href="../customer/index" class="nav-link">
+<a href="<?php echo BASE_URL?>" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Khách hàng</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Danh sách hách hàng</font></font></p>
 </a>
 </li>
 <li class="nav-item">
 <a href="/Admin/CustomerRole/List" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vai trò của khách hàng</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cấp bậc</font></font></p>
 </a>
 </li>
 <li class="nav-item">
 <a href="/Admin/OnlineCustomer/List" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Khách hàng trực tuyến</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Khách hàng Online</font></font></p>
 </a>
 </li>
 <li class="nav-item">
@@ -181,12 +170,7 @@ Khách hàng
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Các loại hoạt động</font></font></p>
 </a>
 </li>
-<li class="nav-item">
-<a href="/Admin/Customer/GdprLog" class="nav-link">
-<i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Yêu cầu GDPR (nhật ký)</font></font></p>
-</a>
-</li>
+
 </ul>
 </li>
 <li class="nav-item has-treeview">
@@ -201,86 +185,35 @@ Khuyến mại
 <li class="nav-item">
 <a href="/Admin/Discount/List" class="nav-link active">
 <i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Giảm giá</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Danh sách mã giảm giá</font></font></p>
 </a>
 </li>
-<li class="nav-item">
-<a href="/Admin/Affiliate/List" class="nav-link">
-<i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chi nhánh</font></font></p>
-</a>
-</li>
-<li class="nav-item">
-<a href="/Admin/NewsLetterSubscription/List" class="nav-link">
-<i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Người đăng ký bản tin</font></font></p>
-</a>
-</li>
-<li class="nav-item">
-<a href="/Admin/Campaign/List" class="nav-link">
-<i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Các chiến dịch</font></font></p>
-</a>
-</li>
+
 </ul>
 </li>
 <li class="nav-item has-treeview">
 <a href="#" class="nav-link">
 <i class="nav-icon fas fa-cubes"></i>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-Quản lý nội dung
+Bài viết
 </font></font><i class="right fas fa-angle-left "></i>
 </p>
 </a>
 <ul class="nav nav-treeview" style="display: none;">
-<li class="nav-item">
-<a href="/Admin/Topic/List" class="nav-link">
-<i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Chủ đề (trang)</font></font></p>
-</a>
-</li>
-<li class="nav-item">
-<a href="/Admin/MessageTemplate/List" class="nav-link">
-<i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mẫu tin nhắn</font></font></p>
-</a>
-</li>
-<li class="nav-item">
-<a href="/Admin/News/NewsItems" class="nav-link">
-<i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mục tin tức</font></font></p>
-</a>
-</li>
-<li class="nav-item">
-<a href="/Admin/News/NewsComments" class="nav-link">
-<i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Nhận xét tin tức</font></font></p>
-</a>
-</li>
+
 <li class="nav-item">
 <a href="/Admin/Blog/BlogPosts" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bài đăng trên blog</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Danh sách bài viết</font></font></p>
 </a>
 </li>
 <li class="nav-item">
 <a href="/Admin/Blog/BlogComments" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bình luận blog</font></font></p>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bình luận</font></font></p>
 </a>
 </li>
-<li class="nav-item">
-<a href="/Admin/Poll/List" class="nav-link">
-<i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thăm dò ý kiến</font></font></p>
-</a>
-</li>
-<li class="nav-item">
-<a href="/Admin/Forum/List" class="nav-link">
- <i class="nav-icon far fa-dot-circle"></i>
-<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Diễn đàn</font></font></p>
-</a>
-</li>
+
 </ul>
 </li>
 <li class="nav-item has-treeview">

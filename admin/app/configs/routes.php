@@ -2,6 +2,12 @@
 // Quản lý đường dẫn ảo
 $routes['defautl_controller'] ="login";
 $routes['ban-thu']='demo';
+// Đường dẫn khách hàng 
+$routes['khach-hang']='customer/index';
+$routes['khach-hang/them-moi']='customer/addCustomer';
+$routes['khach-hang/xoa']='customer/deleteCustomer';
+$routes['khach-hang/chinh-sua']='customer/editCustomer';
+$routes['khach-hang/xem']='customer/viewCustomer';
 // Đường dẫn liên quán đến sản phẩm
 $routes['san-pham']='product/index';
 $routes['san-pham/them-moi']='product/addProduct';
