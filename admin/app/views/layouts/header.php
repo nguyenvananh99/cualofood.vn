@@ -22,6 +22,7 @@ require_once "./app/core/Db.php";
  $pM = new posts();
  $UserM = new users();
  $CustomerM = new customers();
+ $phpExcelM = new PHPExcel();
 
 
 

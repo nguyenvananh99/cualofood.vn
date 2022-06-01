@@ -34,19 +34,19 @@ Sản phẩm
 </a>
 </li>
 <li class="nav-item">
-<a href="<?php echo BASE_URL?>product/Category" class="nav-link">
+<a href="<?php echo BASE_URL?>san-pham/chuyen-muc" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thể loại</font></font></p>
 </a>
 </li>
 <li class="nav-item">
-<a href="<?php echo BASE_URL?>brand/index" class="nav-link">
+<a href="<?php echo BASE_URL?>san-pham/thuong-hieu" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thương hiệu</font></font></p>
 </a>
 </li>
 <li class="nav-item">
-<a href="../product/review" class="nav-link">
+<a href="<?php echo BASE_URL?>san-pham/danh-gia" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Đánh giá</font></font></p>
 </a>
@@ -67,7 +67,7 @@ Thuộc tính
 </a>
 <ul class="nav nav-treeview">
 <li class="nav-item">
-<a href="../product/property" class="nav-link">
+<a href="<?php echo BASE_URL?>san-pham/thuoc-tinh" class="nav-link">
 <i class="nav-icon far fa-circle"></i>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Thuộc tính sản phẩm</font></font></p>
 </a>

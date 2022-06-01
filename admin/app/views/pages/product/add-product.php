@@ -38,7 +38,7 @@ require_once "./app/views/layouts/header.php"; ?>
                 </font>
                 <small class="btn btn-secondary">
                     <i class="fas fa-arrow-circle-left text-light"></i>
-                    <a href="index">
+                    <a href="<?php echo BASE_URL?>san-pham">
                         <font class=" text-light" style="vertical-align: inherit;">
                             <font style="vertical-align: inherit;">
                                 Quay lại danh sách

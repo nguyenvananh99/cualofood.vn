@@ -13,7 +13,7 @@
                  </font>
                  <small class="btn btn-secondary">
                      <i class="fas fa-arrow-circle-left text-light"></i>
-                     <a href="<?php echo BASE_URL ?>product/Category">
+                     <a href="<?php echo BASE_URL ?>san-pham/thuong-hieu">
                          <font class=" text-light" style="vertical-align: inherit;">
                              <font style="vertical-align: inherit;">
                                  Quay lại danh sách
