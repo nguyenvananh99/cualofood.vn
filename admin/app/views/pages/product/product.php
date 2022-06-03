@@ -6,7 +6,7 @@
             Sản phẩm
         </h1>
         <div class="float-right">
-            <a class="btn btn-info" href="<?php echo BASE_URL?>san-pham/them-moi">
+            <a class="btn btn-info" href="<?php echo BASE_URL ?>san-pham/them-moi">
                 <i class="fas fa-plus-square"></i>
                 Thêm mới
             </a>
@@ -55,67 +55,65 @@
                 <i class="fas fa-upload"></i>
                 Nhập dữ liệu
             </button>
-            
-<!-- Modal -->
-<div class="modal fade" id="importexcel-window" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    
 
-  <div class="modal-content">
-<div class="modal-header">
-<h4 class="modal-title" id="importexcel-window-title">Nhập dữ liệu từ file excel</h4
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-</div>
-<form method="post" enctype="multipart/form-data" action="">
-<div class="form-horizontal">
-<div class="modal-body">
-<ul class="common-list">
-<li>
-<em>Các sản phẩm nhập khẩu được phân biệt bằng ID. Nếu ID đã tồn tại, thì sản phẩm tương ứng của nó sẽ được cập nhật..</em>
-</li>
-<li>
-<em>Không nên nhập nhiều hơn 500 - 1.000 bản ghi cùng một lúc. Nếu bạn có nhiều bản ghi hơn, tốt hơn nên chia chúng thành nhiều tệp Excel và nhập riêng.</em>
-</li>
-</ul>
-<div class="form-group row">
-<div class="col-md-2">
-<div class="label-wrapper">
-<label class="col-form-label">
- File Excel
-</label>
-</div>
-</div>
-<div class="col-md-10">
-<input type="file" id="importexcelfile" name="file" class="form-control">
-</div>
-</div>
-</div>
-<div class="modal-footer">
-<button type="submit" class="btn btn-primary" name="send-file">
-    Thực hiện
-</button>
-<?php
-if($_SERVER['REQUEST_METHOD']=="POST"&&isset($_POST['send-file'])){
-    if(isset($_FILES['file'])){
-        $file = $_FILES['file']['tmp_name'];
-        echo $file;
-        $objReader = PHPExcel_IOFactory::createReaderForFile($file);
-        $objExel = $objReader->load($file);
-        $sheetData = $objExel->getActiveSheet()->toArray('null',true,true,true);
-        var_dump($sheetData);
-
-    }
-  
-}
+            <!-- Modal -->
+            <div class="modal fade" id="importexcel-window" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
 
 
-?>
-</div>
-</div>
-<input name="__RequestVerificationToken" type="hidden" value="CfDJ8K5ZJ_fvx_lHg-2EHjkH9lQZVOYTj9ybxVATfspW-CCeckFuCIntzKDgP0JQ-4n92e7jt87EYT83SQCEgBE1pGdLgf00Pl9LkAG60oknojz5_JtO3RVUwngTwq2uvxFs7LfBSTd1ADJc_YubwnpUs7c"></form>
-</div>
-  </div>
-</div>
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="importexcel-window-title">Nhập dữ liệu từ file excel</h4 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        </div>
+                        <form method="post" enctype="multipart/form-data">
+                            <div class="form-horizontal">
+                                <div class="modal-body">
+                                    <ul class="common-list">
+                                        <li>
+                                            <em>Các sản phẩm nhập khẩu được phân biệt bằng ID. Nếu ID đã tồn tại, thì sản phẩm tương ứng của nó sẽ được cập nhật..</em>
+                                        </li>
+                                        <li>
+                                            <em>Không nên nhập nhiều hơn 500 - 1.000 bản ghi cùng một lúc. Nếu bạn có nhiều bản ghi hơn, tốt hơn nên chia chúng thành nhiều tệp Excel và nhập riêng.</em>
+                                        </li>
+                                    </ul>
+                                    <div class="form-group row">
+                                        <div class="col-md-2">
+                                            <div class="label-wrapper">
+                                                <label class="col-form-label">
+                                                    File Excel
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-10">
+                                            <input type="file" id="importexcelfile" name="file" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary" name="send-file">
+                                        Thực hiện
+                                    </button>
+                                    <?php
+                                    // if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['send-file'])) {
+                                    //     if (isset($_FILES['file'])) {
+                                    //         $file = $_FILES['file']['tmp_name'];
+                                    //         echo $file;
+                                    //         $objReader = PHPExcel_IOFactory::createReaderForFile($file);
+                                    //         $objExel = $objReader->load($file);
+                                    //         $sheetData = $objExel->getActiveSheet()->toArray('null', true, true, true);
+                                    //         var_dump($sheetData);
+                                    //     }
+                                    // }
+
+
+                                    ?>
+                                </div>
+                            </div>
+                            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8K5ZJ_fvx_lHg-2EHjkH9lQZVOYTj9ybxVATfspW-CCeckFuCIntzKDgP0JQ-4n92e7jt87EYT83SQCEgBE1pGdLgf00Pl9LkAG60oknojz5_JtO3RVUwngTwq2uvxFs7LfBSTd1ADJc_YubwnpUs7c">
+                        </form>
+                    </div>
+                </div>
+            </div>
 
             <button type="button" id="delete-selected" class="btn btn-danger" data-toggle="modal" data-target="#delete-selected-action-confirmation" name="">
                 <i class="far fa-trash-alt"></i>
@@ -154,29 +152,51 @@ if($_SERVER['REQUEST_METHOD']=="POST"&&isset($_POST['send-file'])){
 
 
     <!-- Search bar  -->
-    <form action="" method="post">
         <div class="card">
             <div class="card card-default card-search ">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="col-md-4 ml-3">
-                            <div class="form-group row">
+                        <div class="col-md-4 ml-3 mt-3">
+                        <div class="row search-row " data-hideattribute="ProductListPage.HideSearchBlock">
+<div class="search-text">Search</div>
+<div class="icon-search"><i class="fas fa-search" aria-hidden="true"></i></div>
 
-                                <input type="text" id="productName" class="form-control text-box single-line" value="Tên sản phẩm">
-                            </div>
+</div>
+                            
+                            <form action="<?php echo BASE_URL ?>product/searchProduct"  method="get">
                             <div class="form-group row">
-                                <select class="form-control" name="" id="">
-                                    <option value="1">Chuyên mục 1</option>
-                                    <option value="1">Chuyên mục 2</option>
-                                    <option value="1">Chuyên mục 3</option>
+                                <input type="text" name ="id" id="id" class="form-control text-box single-line" value="" placeholder="Nhập tên sản phẩm">
+                            </div>
+                            <?php
+                               if($_SERVER['REQUEST_METHOD']=='GET' && isset($_GET['search-product']))
+                               {
+                                   $productName = $_GET['productName'];
+                                  
+                                 
+                               }
+                            ?>
+                            <div class="form-group row">
+                                <select class="form-control" name="category" id="category">
+                                    <?php
+                                         $data  =  $pctM->getProductCategory(5);
+                                         while($result=$data->fetch_assoc()){
+                                    ?>
+                                    <option value="<?php echo $result['product_category_name'] ?>"><?php echo $result['product_category_name'] ?></option>
+                                    <?php
+                                            }
+                                    ?>
                                 </select>
                             </div>
                             <div class="form-group row">
-                                <button type="submit" id="search-products" class="btn btn-info btn-search">
+                                <button type="submit" id="search-product" name="search-product"class="btn btn-info btn-search">
                                     <i class="fas fa-search"></i>
-                                    Search
+                                    Tìm kiếm
                                 </button>
                             </div>
+                            <?php
+                             
+                            ?>
+                            </form>
                         </div>
                     </div>
                 </div>

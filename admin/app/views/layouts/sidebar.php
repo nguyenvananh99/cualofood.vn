@@ -13,7 +13,7 @@
 <nav class="mt-2">
 <ul class="nav nav-pills nav-sidebar flex-column nav-legacy" data-widget="treeview" role="menu">
 <li class="nav-item">
-<a href="./dashboard" class="nav-link">
+<a href="./trang-quan-ly" class="nav-link">
 <i class="nav-icon fas fa-desktop"></i>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bảng điều khiển</font></font></p>
 </a>
@@ -98,7 +98,7 @@ Bán hàng
 </a>
 <ul class="nav nav-treeview" style="display: none;">
 <li class="nav-item">
-<a href="/Admin/Order/List" class="nav-link">
+<a href="<?php echo BASE_URL?>don-hang" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Danh sách đơn hàng</font></font></p>
 </a>
@@ -134,19 +134,19 @@ Khách hàng
 </a>
 <ul class="nav nav-treeview" style="display: none;">
 <li class="nav-item">
-<a href="<?php echo BASE_URL?>" class="nav-link">
+<a href="<?php echo BASE_URL?>khach-hang" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Danh sách hách hàng</font></font></p>
 </a>
 </li>
 <li class="nav-item">
-<a href="/Admin/CustomerRole/List" class="nav-link">
+<a href="<?php echo BASE_URL?>khach-hang/cap-bac" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cấp bậc</font></font></p>
 </a>
 </li>
 <li class="nav-item">
-<a href="/Admin/OnlineCustomer/List" class="nav-link">
+<a href="<?php echo BASE_URL?>khach-hang/khach-truc-tuyen" class="nav-link">
 <i class="nav-icon far fa-dot-circle"></i>
 <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Khách hàng Online</font></font></p>
 </a>

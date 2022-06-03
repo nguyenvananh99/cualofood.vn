@@ -12,11 +12,6 @@ Class order extends Controller{
        
 
     }
-    public function addOder(){
-        $this->view('add-order','order',[]);
-       
-
-    }
     public function shipment(){
         $this->view('shipment','order',[]);
        
@@ -24,6 +19,11 @@ Class order extends Controller{
     }
     public function return(){
         $this->view('return','order',[]);
+       
+
+    }
+    public function gift(){
+        $this->view('gift-card','order',[]);
        
 
     }

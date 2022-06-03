@@ -46,6 +46,12 @@ require_once "./app/core/Db.php";
 			$num_row = mysqli_num_rows($get_row);
 			echo $num_row;
         }
+		public function searchWithName($keyword,$category,$start)
+		{
+			$query1 = "SELECT * FROM products WHERE product_id = '$keyword' and product_category= '$category' LIMIT $start,1";
+			$result = $this->db->select($query1);
+			return $result;
+		}
         public function update_product($data,$files, $productName){
 			
 			$productName = mysqli_real_escape_string($this->db->link, $data['productName']);

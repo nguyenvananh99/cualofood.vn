@@ -16,6 +16,10 @@ require_once "./app/core/Controller.php";
         {
             $this->view('add-product','product',[]);
         }
+        public function searchProduct()
+        {
+            $this->view('search','product',[]);
+        }
         // Thêm sản phẩm 
         public function addProduct()
         {

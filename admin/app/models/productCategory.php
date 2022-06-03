@@ -20,12 +20,12 @@ class productCategory extends Database
     }
     public function getProductCategory($start)
     {
-
-        $query1 = "SELECT * FROM product_category LIMIT $start,5";
+        $query1 = "SELECT * FROM product_category  ";
         $result = $this->db->select($query1);
         $page = isset($_GET['page']) ? $_GET['page'] : '';
         return $result;
     }
+  
 
 
     public function  addProductCategory($product_category_name, $product_category_description, $product_category_img)
