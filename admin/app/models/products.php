@@ -27,16 +27,15 @@ require_once "./app/core/Db.php";
         }
 	
 		
-        public function  addProduct($productName, $productDescription,$productPrice)
-        {  $query = "INSERT INTO `products` (`product_id`,`product_name`, `product_description`, `product_price`) VALUES (NULL,'$productName', '$productDescription', '$productPrice')";
+        public function  addProduct($productName, $productDescription,$productPrice,$productAvatar)
+        {  $query = "INSERT INTO `products` (`product_id`,`product_name`, `product_description`, `product_price`,`product_avatar') VALUES ('NULL','$productName', '$productDescription', '$productPrice','$productAvatar')";
               $insert_row = $this->db->insert($query);
               return  $insert_row ;
         }
-        public function deleteProduct($id){
-           $this->getProduct();
-           $query =  "DELETE FROM users WHERE ID =$id";
-           $delete_row = $this->db->delete($query);
-           return $delete_row;
+        public function editProduct($id){
+			$query = "SELECT * FROM products WHERE product_id = $id";
+           $edit_product = $this->db->delete($query);
+           return $edit_product;
 
         }
         public function countProduct()

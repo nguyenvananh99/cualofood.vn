@@ -1,32 +1,8 @@
 <?php
 ob_start();
 require_once "./app/views/layouts/header.php"; ?>
-<form action="" method="post">
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        echo 'Nhận posttttttttttttttttttttttttt';
-        if (isset($_POST['product_save'])) {
-            $productName = $_POST['product_name'];
-            $productDescription = $_POST['product_description'];
-            $productAvatar = $_POST['product_avatar'];
-            $productImg1 = $_POST['product_img1'];
-            $productImg2 = $_POST['product_img2'];
-            $productImg3 = $_POST['product_img3'];
-            $productPrice = $_POST['product_price'];
-            $productPublished = $_POST['product_published'];
-            $productBrand = $_POST['product_brand'];
-            $productCategory = $_POST['product_category'];
-            if ($productName == "" || $productDescription == "" || $productAvatar == "" || $productImg1 == "" || $productImg2 == "" || $productImg3 == "" || $productPrice == "" || $productPublished == "" || $productBrand == "" || $productCategory == "") {
-                echo "<script>alert('Error ! Xin vui lòng nhập đầy đủ thông tin.'); </script> ";
-            } else {
-                // $data = $UserM->addUser($username,$password,$fullname,$birtday,$email,$phone,$address,$office);
-                // echo "<script>alert('Done ! Thêm sản phẩm thành công.'); </script> ";
-                // header('location: ./index');
-            }
-        }
-    }
+<form action="" method="post" enctype="multipart/form-data">
 
-    ?>
     <div class="wrapper col-sm-8 offset-3">
         <!-- header  -->
         <div class="content-header clearfix">
@@ -69,28 +45,27 @@ require_once "./app/views/layouts/header.php"; ?>
         <!-- end header  -->
         <?php
 
-        $_POST['product_price'] = "";
-        $_POST['product_avatar'] = "";
-        $_POST['product_published'] = "";
-
-
+  
+        
+      
+      
 
         if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['save_product'])) {
+            
+        
 
             $productName = $_POST['product_name'] . '<br>';
             $productDescription = $_POST['product_description'] . '<br>';
-            $productAvatar = $_POST['product_avatar'] . '<br>';
-            $productImg1 = $_POST['product_img1'] . '<br>';
-            $productImg2 = $_POST['product_img2'] . '<br>';
-            $productImg3 = $_POST['product_img3'] . '<br>';
-            $productPrice = $_POST['product_price'] . '<br>';
+         echo   $productPrice = $_POST['product_price'] . '<br>';
             $productPublished = $_POST['product_published'] . '<br>';
             $productBrand = $_POST['product_brand'] . '<br>';
             $productCategory = $_POST['product_category'] . '<br>';
-            if ($productName == "" || $productDescription == "" || $productAvatar == "" || $productImg1 == "" || $productImg2 == "" || $productImg3 == "" || $productPrice == "") {
+            $productAvatar = $_POST['product_avatar'] ;
+            
+            if ($productName == "" || $productDescription == "" || $productAvatar == ""  || $productPrice == "") {
                 echo "<script>alert('Error ! Xin vui lòng nhập đầy đủ thông tin.'); </script> ";
             } else {
-                $data = $prM->addProduct($productName, $productDescription, $productAvatar, $productPrice);
+                $data = $prM->addProduct($productName, $productDescription, $productPrice,$productAvatar);
                 echo "<script>alert('Done ! Thêm sản phẩm thành công.'); </script> ";
                 header('location: ./index');
             }
@@ -157,7 +132,7 @@ require_once "./app/views/layouts/header.php"; ?>
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <input class="form-control" type="file" id="product_avatar" multiple />
+                        <input class="form-control" type="file" name="product_avatar" id="product_avatar" multiple />
                     </div>
                 </div>
                 <div class="form-group row">
@@ -240,7 +215,7 @@ require_once "./app/views/layouts/header.php"; ?>
             <div class="card-body">
                 <div class="form-group row" id="product-price-area">
                     <div class="col-md-3">
-                        <div class="label-wrapper"><label class="col-form-label" for="Price">
+                        <div class="label-wrapper"><label class="col-form-label" for="product_price">
                                 <font style="vertical-align: inherit;">
                                     <font style="vertical-align: inherit;">Giá sản phẩm</font>
                                 </font>
@@ -250,7 +225,7 @@ require_once "./app/views/layouts/header.php"; ?>
                     </div>
                     <div class="col-md-9">
                         <input type="text" class="form-control text-box sigle-line">
-                        <span class="field-validation-valid" data-valmsg-for="Price" data-valmsg-replace="true"></span>
+                        <span  name ="product_price" id="product_price"class="field-validation-valid" data-valmsg-for="Price" data-valmsg-replace="true"></span>
                     </div>
                 </div>
 

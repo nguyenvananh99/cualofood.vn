@@ -161,11 +161,12 @@
 <div class="search-text">Search</div>
 <div class="icon-search"><i class="fas fa-search" aria-hidden="true"></i></div>
 
+
 </div>
                             
-                            <form action="<?php echo BASE_URL ?>product/searchProduct"  method="get">
+                            <form action="<?php echo BASE_URL ?>san-pham/tim-kiem"  method="get">
                             <div class="form-group row">
-                                <input type="text" name ="id" id="id" class="form-control text-box single-line" value="" placeholder="Nhập tên sản phẩm">
+                                <input type="text" name ="id" id="id" class="form-control text-box single-line" value="" placeholder="Nhập ID sản phẩm">
                             </div>
                             <?php
                                if($_SERVER['REQUEST_METHOD']=='GET' && isset($_GET['search-product']))
@@ -186,17 +187,14 @@
                                             }
                                     ?>
                                 </select>
-                            </div>
+                            </div>     
                             <div class="form-group row">
-                                <button type="submit" id="search-product" name="search-product"class="btn btn-info btn-search">
-                                    <i class="fas fa-search"></i>
-                                    Tìm kiếm
-                                </button>
+                            <button type="submit" id="search-product" name="search-product"class="btn btn-info btn-search">
+                                        Tìm kiếm
+                                        </button>  
                             </div>
-                            <?php
-                             
-                            ?>
-                            </form>
+                                                    
+                                              </form>
                         </div>
                     </div>
                 </div>
@@ -259,7 +257,7 @@
                                         echo '<i class="fas fa-times false-icon" nop-value="false"></i>';
                                     } ?></td>
                                 <td>
-                                    <a class="btn btn-default" href="Edit/1"><i class="fas fa-pencil-alt"></i>Edit</a>
+                                    <a class="btn btn-default" href="<?php echo BASE_URL ?>san-pham/chinh-sua?id=<?php echo $result['product_id'] ?>"><i class="fas fa-pencil-alt"></i>Edit</a>
                                 </td>
                             </tr>
                         <?php } ?>

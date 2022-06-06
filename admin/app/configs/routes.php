@@ -2,6 +2,7 @@
 // Quản lý đường dẫn ảo
 $routes['defautl_controller'] ="login";
 $routes['trang-quan-ly']='dashboard';
+
 // Đường dẫn khách hàng 
 $routes['khach-hang']='customer/index';
 $routes['khach-hang/them-moi']='customer/addCustomer';
@@ -23,6 +24,7 @@ $routes['san-pham/them-moi']='product/addProduct';
 $routes['san-pham/xoa']='product/deleteProduct';
 $routes['san-pham/xem']='product/viewProduct';
 $routes['san-pham/chinh-sua']='product/editProduct';
+$routes['san-pham/tim-kiem']='product/searchProduct';
     // Từ khoá 
     $routes['san-pham/tu-khoa']='product/keyword';
     $routes['san-pham/tu-khoa/them-moi']='product/addKeyword';
