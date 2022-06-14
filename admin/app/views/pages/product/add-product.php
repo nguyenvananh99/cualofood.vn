@@ -144,9 +144,16 @@ require_once "./app/views/layouts/header.php"; ?>
                     </div>
                     <div class="col-md-9">
                         <select class="form-control" name="product_brand" id="product_brand">
-                            <option value="1">Thương hiệu 1</option>
-                            <option value="2">Thương hiệu 2</option>
-                            <option value="3">Thương hiệu 3</option>
+                            <?php
+                            $data = $brM->getAllBrand();
+                            while($result=$data->fetch_assoc()){
+                            
+                            ?>
+                            <option value="1"><?php echo $result['brand_name'] ?></option>
+                            <?php
+                            }
+                            ?>
+                   
                         </select>
                     </div>
                 </div>
@@ -158,9 +165,17 @@ require_once "./app/views/layouts/header.php"; ?>
                     </div>
                     <div class="col-md-9">
                         <select class="form-control" name="product_category" id="product_category">
-                            <option value="1">Danh mục 1</option>
-                            <option value="2">Danh mục 2</option>
-                            <option value="3">Danh mục 3</option>
+                        <?php
+                            $data = $pctM->getAllProductCategory();
+                            while($result=$data->fetch_assoc()){
+                            
+                            ?>
+                            <option value="1"><?php echo $result['product_category_name'] ?></option>
+                            <?php
+                            }
+                            ?>
+                   
+                       
                         </select>
                     </div>
                 </div>

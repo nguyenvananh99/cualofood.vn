@@ -23,7 +23,13 @@ require_once "./app/core/Db.php";
 			$result = $this->db->select($query1);
 			$page = isset($_GET['page']) ?$_GET['page'] : '';
 			return $result;
+        }
+		public function getAllBrand()
+        {
 
+			$query1 ="SELECT * FROM brands";
+			$result = $this->db->select($query1);
+			return $result;
         }
 	
 		

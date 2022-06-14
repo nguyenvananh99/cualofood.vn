@@ -25,6 +25,12 @@ class productCategory extends Database
         $page = isset($_GET['page']) ? $_GET['page'] : '';
         return $result;
     }
+    public function getAllProductCategory()
+    {
+        $query1 = "SELECT * FROM product_category  ";
+        $result = $this->db->select($query1);
+        return $result;
+    }
   
 
 
