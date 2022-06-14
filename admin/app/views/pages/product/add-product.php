@@ -43,36 +43,7 @@ require_once "./app/views/layouts/header.php"; ?>
             </div>
         </div>
         <!-- end header  -->
-        <?php
 
-  
-        
-      
-      
-
-        if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['save_product'])) {
-            
-        
-
-            $productName = $_POST['product_name'] . '<br>';
-            $productDescription = $_POST['product_description'] . '<br>';
-         echo   $productPrice = $_POST['product_price'] . '<br>';
-            $productPublished = $_POST['product_published'] . '<br>';
-            $productBrand = $_POST['product_brand'] . '<br>';
-            $productCategory = $_POST['product_category'] . '<br>';
-            $productAvatar = $_POST['product_avatar'] ;
-            
-            if ($productName == "" || $productDescription == "" || $productAvatar == ""  || $productPrice == "") {
-                echo "<script>alert('Error ! Xin vui lòng nhập đầy đủ thông tin.'); </script> ";
-            } else {
-                $data = $prM->addProduct($productName, $productDescription, $productPrice,$productAvatar);
-                echo "<script>alert('Done ! Thêm sản phẩm thành công.'); </script> ";
-                header('location: ./index');
-            }
-        }
-
-
-        ?>
 
         <!-- Content  -->
 
@@ -122,7 +93,7 @@ require_once "./app/views/layouts/header.php"; ?>
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <input class="check-box" id="product_published" name="product_published" type="checkbox" value="true">
+                        <input class="check-box" id="product_published" name="product_published" type="checkbox" value="false">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -132,10 +103,10 @@ require_once "./app/views/layouts/header.php"; ?>
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <input class="form-control" type="file" name="product_avatar" id="product_avatar" multiple />
+                        <input class="form-control" type="file" name="product_avatar" id="product_avatar"/>
                     </div>
                 </div>
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                     <div class="col-md-3">
                         <div class="label-wrapper">
                             <label for="product_img1" class="form-label"> Hình 1</label>
@@ -144,8 +115,8 @@ require_once "./app/views/layouts/header.php"; ?>
                     <div class="col-md-9">
                         <input name="product_img1" class="form-control" type="file" id="product_img1" multiple />
                     </div>
-                </div>
-                <div class="form-group row">
+                </div> -->
+                <!-- <div class="form-group row">
                     <div class="col-md-3">
                         <div class="label-wrapper">
                             <label for="product_img2" class="form-label"> Hình 2</label>
@@ -164,7 +135,7 @@ require_once "./app/views/layouts/header.php"; ?>
                     <div class="col-md-9">
                         <input class="form-control" name="product_img3" type="file" id="product_img3" multiple />
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group row">
                     <div class="col-md-3">
                         <div class="lable-wrapper">
@@ -224,8 +195,8 @@ require_once "./app/views/layouts/header.php"; ?>
                         </div>
                     </div>
                     <div class="col-md-9">
-                        <input type="text" class="form-control text-box sigle-line">
-                        <span  name ="product_price" id="product_price"class="field-validation-valid" data-valmsg-for="Price" data-valmsg-replace="true"></span>
+                        <input name ="product_price" id="product_price" type="text" class="form-control text-box sigle-line">
+                        <span  class="field-validation-valid" data-valmsg-for="Price" data-valmsg-replace="true"></span>
                     </div>
                 </div>
 
@@ -235,6 +206,29 @@ require_once "./app/views/layouts/header.php"; ?>
             </div>
 
         </div>
+                
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['save_product'])) {
+            $productName = $_POST['product_name'] . '<br>';
+            $productDescription = $_POST['product_description'] . '<br>';
+            $productPrice = $_POST['product_price'] . '<br>';
+            $productPublished = $_POST['product_published'] . '<br>';
+            $productBrand = $_POST['product_brand'] . '<br>';
+            $productCategory = $_POST['product_category'] . '<br>';
+            $productAvatar = $_POST['product_avatar'];
+            
+            
+            
+            if ($productName == "" || $productDescription == "" ) {
+                echo "<script>alert('Error ! Xin vui lòng nhập đầy đủ thông tin.'); </script> ";
+            } else {
+                var_dump($data);
+                // echo "<script>alert('Done ! Thêm sản phẩm thành công.'); </script> ";
+                // header('location: ./index');
+            }
+        }
+    
+        ?>
     </div>
 
 </form>
