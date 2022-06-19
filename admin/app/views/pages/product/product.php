@@ -1,6 +1,14 @@
 <?php require_once "./app/views/layouts/header.php"; ?>
 <div class="content-wrapper">
-    <!-- Header  -->
+  
+
+
+  
+                            <?php
+                          $total_row = $prM->total_rows();
+                          if( $total_row>0){
+                              ?>
+                                <!-- Header  -->
     <div class="content-header clearfix">
         <h1 class="float-left">
             Sản phẩm
@@ -93,20 +101,6 @@
                                     <button type="submit" class="btn btn-primary" name="send-file">
                                         Thực hiện
                                     </button>
-                                    <?php
-                                    // if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['send-file'])) {
-                                    //     if (isset($_FILES['file'])) {
-                                    //         $file = $_FILES['file']['tmp_name'];
-                                    //         echo $file;
-                                    //         $objReader = PHPExcel_IOFactory::createReaderForFile($file);
-                                    //         $objExel = $objReader->load($file);
-                                    //         $sheetData = $objExel->getActiveSheet()->toArray('null', true, true, true);
-                                    //         var_dump($sheetData);
-                                    //     }
-                                    // }
-
-
-                                    ?>
                                 </div>
                             </div>
                             <input name="__RequestVerificationToken" type="hidden" value="CfDJ8K5ZJ_fvx_lHg-2EHjkH9lQZVOYTj9ybxVATfspW-CCeckFuCIntzKDgP0JQ-4n92e7jt87EYT83SQCEgBE1pGdLgf00Pl9LkAG60oknojz5_JtO3RVUwngTwq2uvxFs7LfBSTd1ADJc_YubwnpUs7c">
@@ -149,205 +143,207 @@
         </div>
     </div>
     <!-- End header  -->
-
-
-    <!-- Search bar  -->
-        <div class="card">
-            <div class="card card-default card-search ">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-4 ml-3 mt-3">
+                                <!-- Search bar  -->
+    <div class="card">
+        <div class="card card-default card-search ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-4 ml-3 mt-3">
                         <div class="row search-row " data-hideattribute="ProductListPage.HideSearchBlock">
-<div class="search-text">Search</div>
-<div class="icon-search"><i class="fas fa-search" aria-hidden="true"></i></div>
+                            <div class="search-text">Search</div>
+                            <div class="icon-search"><i class="fas fa-search" aria-hidden="true"></i></div>
 
 
-</div>
-                            
-                            <form action="<?php echo BASE_URL ?>san-pham/tim-kiem"  method="get">
+                        </div>
+
+                        <form action="<?php echo BASE_URL ?>san-pham/tim-kiem" method="get">
                             <div class="form-group row">
-                                <input type="text" name ="id" id="id" class="form-control text-box single-line" value="" placeholder="Nhập ID sản phẩm">
+                                <input type="text" name="id" id="id" class="form-control text-box single-line" value="" placeholder="Nhập ID sản phẩm">
                             </div>
+                            <!-- Search-Show category product  -->
                             <?php
-                               if($_SERVER['REQUEST_METHOD']=='GET' && isset($_GET['search-product']))
-                               {
-                                   $productName = $_GET['productName'];
-                                  
-                                 
-                               }
+                            if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['search-product'])) {
+                                $productName = $_GET['productName'];
+                            }
                             ?>
                             <div class="form-group row">
                                 <select class="form-control" name="category" id="category">
                                     <?php
-                                         $data  =  $pctM->getProductCategory(5);
-                                         while($result=$data->fetch_assoc()){
+                                    $data  =  $pctM->getProductCategory(5);
+                                    while ($result = $data->fetch_assoc()) {
                                     ?>
-                                    <option value="<?php echo $result['product_category_name'] ?>"><?php echo $result['product_category_name'] ?></option>
+                                        <option value="<?php echo $result['product_category_name'] ?>"><?php echo $result['product_category_name'] ?></option>
                                     <?php
-                                            }
+                                    }
                                     ?>
                                 </select>
-                            </div>     
-                            <div class="form-group row">
-                            <button type="submit" id="search-product" name="search-product"class="btn btn-info btn-search">
-                                        Tìm kiếm
-                                        </button>  
                             </div>
-                                                    
-                                              </form>
-                        </div>
+                            <div class="form-group row">
+                                <button type="submit" id="search-product" name="search-product" class="btn btn-info btn-search">
+                                    Tìm kiếm
+                                </button>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
             </div>
-    </form>
-    <!-- End search bar  -->
+        </div>
+        </form>
+        <!-- End search bar  -->
 
-    <!-- Table  -->
-    <div class="card card-default">
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table table-bordered table-striped table-hover">
-                    <thead>
-                        <th><input type="checkbox" name="" id=""></th>
-                        <th>ID</th>
-                        <th>Hình ảnh</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Mô tả</th>
-                        <th>Giá</th>
-                        <th>Số lượng</th>
-                        <th>Trạng thái</th>
-                        <th>Thao tác</th>
-                    </thead>
-                    <tbody>
-
-                        <?php
-
-                        $total_page =  $prM->total_pages();
-                        $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-                        if ($current_page > $total_page) {
-                            $current_page = $total_page;
-                        } else if ($current_page < 1) {
-                            $current_page = 1;
-                        }
-                        // Tìm Start
-                        $start = ($current_page - 1) * 5;
-                        $data = $prM->getProduct($start);
-                        while ($result = $data->fetch_assoc()) {
-
-
-                        ?>
-                            <tr>
-                                <td><input type="checkbox" name="" id=""></td>
-                                <td><?php echo $result['product_id'];
-                                    // echo $abc = $prM->countProduct();
-
-
-                                    ?>
-
-                                </td>
-                                <td><?php echo $result['product_avatar'];
-                                    ?></td>
-                                <td><?php echo $result['product_name']; ?></td>
-                                <td><?php echo $result['product_description']; ?></td>
-                                <td><?php echo $result['product_price']; ?></td>
-                                <td><?php echo $result['product_number']; ?></td>
-                                <td><?php if ($result['product_published'] == 1) {
-                                        echo '<i class="fas fa-check true-icon" nop-value="true"></i>';
-                                    } else {
-                                        echo '<i class="fas fa-times false-icon" nop-value="false"></i>';
-                                    } ?></td>
-                                <td>
-                                    <a class="btn btn-default" href="<?php echo BASE_URL ?>san-pham/chinh-sua?id=<?php echo $result['product_id'] ?>"><i class="fas fa-pencil-alt"></i>Edit</a>
-                                </td>
-                            </tr>
-                        <?php } ?>
-
-
-                    </tbody>
-                </table>
+        <!--  Get info product -->
+        <div class="card card-default">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <th><input type="checkbox" id="check-all"></th>
+                            <th>ID</th>
+                            <th>Hình ảnh</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Mô tả</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </thead>
+                        <tbody>
+                            <?php 
+                            $total_page =  $prM->total_pages();
+                            $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+                            if ($current_page > $total_page) {
+                                $current_page = $total_page;
+                            } else if ($current_page < 1) {
+                                $current_page = 1;
+                            }
+                            // Tìm Start
+                            $start = ($current_page - 1) * 5;
+                            // Process data 
+                       
+                                $data = $prM->getProduct($start);
+                        
+                                while ($result = $data->fetch_assoc()) {
+                                                                         ?>
+                                    <tr>
+                                        <td><input id="check[]" type="checkbox"></td>
+                                        <td>
+                                            <?php echo $result['product_id'];?>
+                                        </td>
+                                        <td><?php echo $result['product_avatar'];?></td>
+                                        <td><?php echo $result['product_name']; ?></td>
+                                        <td><?php echo $result['product_description']; ?></td>
+                                        <td><?php echo $result['product_price']; ?></td>
+                                        <td><?php echo $result['product_number']; ?></td>
+                                        <td><?php if ($result['product_published'] == 1) {
+                                                echo '<i class="fas fa-check true-icon" nop-value="true"></i>';
+                                            } else {
+                                                echo '<i class="fas fa-times false-icon" nop-value="false"></i>';
+                                            } ?></td>
+                                        <td>
+                                            <a class="btn btn-default" href="<?php echo BASE_URL ?>san-pham/chinh-sua?id=<?php echo $result['product_id'] ?>"><i class="fas fa-pencil-alt"></i>Edit</a>
+                                        </td>
+                                    </tr>
+                            <?php 
+                            } ?>
+  
+  
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- End table  -->
-    <?php
-
-    echo '
-			<div class="row margin-t-5"><div class="col-lg-5 col-xs-12">
-			<div class="float-lg-left">
-				<div class="dataTables_paginate paging_simple_numbers" id="products-grid_paginate">
-					<ul class="pagination">';
-    if ($current_page > 1 && $total_page > 1) {
-        echo '<li class="paginate_button page-item previous " id="products-grid_previous"><a href="?page=' . ($current_page - 1) . '" aria-controls="products-grid" data-dt-idx="0" tabindex="0" class="page-link"><i class="fas fa-caret-left"></i></a></li>';
-    }
-
-    // Lặp khoảng giữa
-    for ($i = 1; $i <= $total_page; $i++) {
-        // Nếu là trang hiện tại thì hiển thị thẻ span
-        // ngược lại hiển thị thẻ a
-        if ($i == $current_page) {
-            echo ' <li class="paginate_button page-item active"><a href="" aria-controls="products-grid" data-dt-idx="1" tabindex="0" class="page-link">' . ($i) . '</a></li>';
-        } else {
-            echo '<li class="paginate_button page-item "><a href="?page=' . ($i) . '"class="page-link">' . $i . '</a> </li>';
+  
+        <!-- End table  -->
+        <?php
+  
+        echo '
+            <div class="row margin-t-5"><div class="col-lg-5 col-xs-12">
+            <div class="float-lg-left">
+                <div class="dataTables_paginate paging_simple_numbers" id="products-grid_paginate">
+                    <ul class="pagination">';
+        if ($current_page > 1 && $total_page > 1) {
+            echo '<li class="paginate_button page-item previous " id="products-grid_previous"><a href="?page=' . ($current_page - 1) . '" aria-controls="products-grid" data-dt-idx="0" tabindex="0" class="page-link"><i class="fas fa-caret-left"></i></a></li>';
         }
-    }
-
-    // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
-    if ($current_page < $total_page && $total_page > 1) {
-        echo '<li class="paginate_button page-item next" id="products-grid_next">
-				<a href="?page=' . ($current_page + 1) . '" aria-controls="products-grid" data-dt-idx="4" tabindex="0" class="page-link">
-				<i class="fas fa-caret-right"></i>
-				</a>
-			</li>';
-    }
-    echo '	</ul>
-			</div>
-		</div>
-		</div>
-		<div class="col-lg-3 col-xs-12">
-				<div class="text-center">
-					<div class="dataTables_length" id="products-grid_length">
+  
+        // Lặp khoảng giữa
+        for ($i = 1; $i <= $total_page; $i++) {
+            // Nếu là trang hiện tại thì hiển thị thẻ span
+            // ngược lại hiển thị thẻ a
+            if ($i == $current_page) {
+                echo ' <li class="paginate_button page-item active"><a href="" aria-controls="products-grid" data-dt-idx="1" tabindex="0" class="page-link">' . ($i) . '</a></li>';
+            } else {
+                echo '<li class="paginate_button page-item "><a href="?page=' . ($i) . '"class="page-link">' . $i . '</a> </li>';
+            }
+        }
+  
+        // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+        if ($current_page < $total_page && $total_page > 1) {
+            echo '<li class="paginate_button page-item next" id="products-grid_next">
+                <a href="?page=' . ($current_page + 1) . '" aria-controls="products-grid" data-dt-idx="4" tabindex="0" class="page-link">
+                <i class="fas fa-caret-right"></i>
+                </a>
+            </li>';
+        }
+        echo '	</ul>
+            </div>
+        </div>
+        </div>
+        <div class="col-lg-3 col-xs-12">
+                <div class="text-center">
+                    <div class="dataTables_length" id="products-grid_length">
                     <form method="POST" action="">
-						<label>Show 
+                        <label>Show 
                         <select name="start_select" aria-controls="products-grid" class="custom-select custom-select-sm form-control form-control-sm">
-							<option value="7">5</option>
-							<option value="15">15</option>
-							<option value="20">20</option>
-							<option value="50">50</option>
-							<option value="100">100</option>
-						</select> 
-						items</label>
+                            <option value="7">5</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select> 
+                        items</label>
                     </form>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-xs-12">
-				<div class="float-lg-right text-center">
-					<div class="dataTables_info" id="products-grid_info" role="status" aria-live="polite">1-15 of 45 items</div>
-				</div>
-			</div>
-			<div class="col-lg-1 col-xs-12">
-				<div class="float-lg-right text-center data-tables-refresh">
-					<div class="dt-buttons btn-group flex-wrap">
-						<button class="btn btn-secondary" tabindex="0" aria-controls="products-grid" type="button">
-							<span>
-								<i class="fas fa-sync-alt" style="padding-left: 5px"></i>
-							</span>
-						</button> 
-					</div>
-				</div>
-			</div>
-			</div>';
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-xs-12">
+                <div class="float-lg-right text-center">
+                    <div class="dataTables_info" id="products-grid_info" role="status" aria-live="polite">1-15 of 45 items</div>
+                </div>
+            </div>
+            <div class="col-lg-1 col-xs-12">
+                <div class="float-lg-right text-center data-tables-refresh">
+                    <div class="dt-buttons btn-group flex-wrap">
+                        <button class="btn btn-secondary" tabindex="0" aria-controls="products-grid" type="button">
+                            <span>
+                                <i class="fas fa-sync-alt" style="padding-left: 5px"></i>
+                            </span>
+                        </button> 
+                    </div>
+                </div>
+            </div>
+            </div>';
+                          }
+                          else{
+                              echo '<div class="d-flex justify-content-center align-items-center" id="main">
+                              <h1 class="mr-3 pr-3 align-top border-right inline-block align-content-center">Lỗi</h1>
+                              <div class="inline-block align-middle">
+                                  <h2 class="font-weight-normal lead" id="desc">Hiện tại không có sản phẩm nào .</h2>
+                                  <a class="btn btn-info" href="'. BASE_URL .'san-pham/them-moi">
+                                  <i class="fas fa-plus-square"></i>
+                                  Thêm mới
+                              </a>
+                              </div>
+                  
+                          </div>';
+                          }
+                         
+      ?>
+      <style>
+          #main {
+    height: 100vh;
+}
+      </style>
 
-
-    ?>
-    <?php
-    if (isset($_POST["start_select"])) {
-        echo 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa';
-    }
-    ?>
-
-    <!--end  page -->
-
-</div>
-<?php require_once "./app/views/layouts/footer.php"; ?>
+    </div>
+    <?php require_once "./app/views/layouts/footer.php"; ?>

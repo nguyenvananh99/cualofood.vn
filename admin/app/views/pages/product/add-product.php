@@ -146,12 +146,17 @@ require_once "./app/views/layouts/header.php"; ?>
                         <select class="form-control" name="product_brand" id="product_brand">
                             <?php
                             $data = $brM->getAllBrand();
+                            
+
                             while($result=$data->fetch_assoc()){
                             
                             ?>
                             <option value="1"><?php echo $result['brand_name'] ?></option>
                             <?php
+                   
                             }
+                                                            
+                        
                             ?>
                    
                         </select>
@@ -167,11 +172,13 @@ require_once "./app/views/layouts/header.php"; ?>
                         <select class="form-control" name="product_category" id="product_category">
                         <?php
                             $data = $pctM->getAllProductCategory();
+                           
                             while($result=$data->fetch_assoc()){
-                            
+                         
                             ?>
                             <option value="1"><?php echo $result['product_category_name'] ?></option>
                             <?php
+                            
                             }
                             ?>
                    
@@ -223,6 +230,47 @@ require_once "./app/views/layouts/header.php"; ?>
         </div>
                 
         <?php
+		// Kiểm tra phương thức gửi form đi có phải là POST hay ko ?
+		if($_SERVER["REQUEST_METHOD"] == "POST"){
+		    // Kiểm tra quá trình upload file có bị lỗi gì không ?
+		    if(isset($_FILES["product_avatar"]) && $_FILES["product_avatar"]["error"] == 0){
+		    	// Mảng chưa định dạng file cho phép
+		        $allowed = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
+		        // Lấy thông tin file bao gồm tên file, loại file, kích cỡ file
+		        $filename = $_FILES["product_avatar"]["name"];
+		        $filetype = $_FILES["product_avatar"]["type"];
+		        $filesize = $_FILES["product_avatar"]["size"];
+		    
+		        // Kiểm tra định dạng file .jpg, png,...
+		        $ext = pathinfo($filename, PATHINFO_EXTENSION);
+		        // Nếu không đúng định dạng file thì báo lỗi
+		        if(!array_key_exists($ext, $allowed)) die("Lỗi : Vui lòng chọn đúng định dang file.");
+		    
+		        // Cho phép kích thước tối đa của file là 5MB
+		        $maxsize = 5 * 1024 * 1024;
+		        // Nếu kích thước lớn hơn 5MB thì báo lỗi
+		        if($filesize > $maxsize) die("Lỗi : Kích thước file lớn hơn giới hạn cho phép");
+		    
+		        // Kiểm tra file ok hết chưa
+		        if(in_array($filetype, $allowed)){
+		            // Kiểm tra xem file đã tồn tại chưa, nếu rồi thì báo lỗi, không thì tiến hành upload
+		            if(file_exists("./public/img/uploads/" . $_FILES["product_avatar"]["name"])){
+		                echo $_FILES["product_avatar"]["name"] . " đã tồn tại";
+		            } else{
+		            	// Hàm move_uploaded_file sẽ tiến hành upload file lên thư mục upload
+		                move_uploaded_file($_FILES["product_avatar"]["tmp_name"], "./public/img/uploads/" . $_FILES["product_avatar"]["name"]);
+		                // Thông báo thành công
+		                echo "Upload file thành công";
+		            } 
+		        } else{
+		            echo "Lỗi : Có vấn đề xảy ra khi upload file"; 
+		        }
+		    } else{
+		        echo "Lỗi: " . $_FILES["product_avatar"]["error"];
+		    }
+		}
+	?>
+        <?php
         if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['save_product'])) {
             $productName = $_POST['product_name'] . '<br>';
             $productDescription = $_POST['product_description'] . '<br>';
@@ -231,15 +279,12 @@ require_once "./app/views/layouts/header.php"; ?>
             $productBrand = $_POST['product_brand'] . '<br>';
             $productCategory = $_POST['product_category'] . '<br>';
             $productAvatar = $_POST['product_avatar'];
-            
-            
-            
-            if ($productName == "" || $productDescription == "" ) {
+            if ($productName == "" ||$productDescription == "" ||$productPrice == "" ||$productPublished == "" ||$productCategory == "" ||$productAvatar == "") {
                 echo "<script>alert('Error ! Xin vui lòng nhập đầy đủ thông tin.'); </script> ";
             } else {
-                var_dump($data);
-                // echo "<script>alert('Done ! Thêm sản phẩm thành công.'); </script> ";
-                // header('location: ./index');
+        
+                echo "<script>alert('Done ! Thêm sản phẩm thành công.'); </script> ";
+                header('location: ./index');
             }
         }
     

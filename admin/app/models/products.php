@@ -8,8 +8,14 @@ require_once "./app/core/Db.php";
         }
 		public function total_rows(){
 			$query = "SELECT * FROM products";
-            $total_row = mysqli_num_rows($this->db->select($query));
-			return   $total_row;
+            $total_row = $this->db->select($query);
+			if($total_row!=false && $total_row->num_rows>0){
+				return $total_row->num_rows;
+			}
+			else{
+				return $total_row = 0;
+			}
+			
 		}
 		public function total_pages(){
 			$total_row = $this->total_rows();
@@ -51,64 +57,8 @@ require_once "./app/core/Db.php";
 			$result = $this->db->select($query1);
 			return $result;
 		}
-        public function update_product($data,$files, $productName){
-			
-			$productName = mysqli_real_escape_string($this->db->link, $data['productName']);
-			
-			$price = mysqli_real_escape_string($this->db->link, $data['price']);
-			$description = mysqli_real_escape_string($this->db->link, $data['description']);
-
-			$permited=array('jpg','jpeg','png','gif');
-	    	$file_name=$_FILES['image']['name'];
-	    	$file_size=$_FILES['image']['size'];
-	    	$file_temp=$_FILES['image']['tmp_name'];
-
-	    	$div=explode('.', $file_name);
-	    	$file_ext=strtolower(end($div));
-	    	$unique_image=substr(md5(time()), 0, 10).'.'.$file_ext;
-	    	$uploaded_image="uploads/".$unique_image;
-
-			
-				if(!empty($file_name)){
-					if($file_size > 1048567){
-						$alert = "<span>Kích thước ảnh quá lớn</span>";
-						return $alert;
-					}
-					elseif (in_array($file_ext,$permited) === false) 
-					{
-						$alert = "<span>Bạn chỉ có thể cập nhật:-".implode(', ',$permited)."</span>";
-						return $alert;
-					}
-					$query = "UPDATE tbl_product 
-							  SET productName = '$productName' , 
-							      price = '$price', 
-							      description = '$description' , 
-							      image = '$unique_image' 						       
-							    WHERE productName = '$productName'";
-
-				}else{
-					$query = "UPDATE tbl_product 
-							  SET productName = '$productName' ,
-							  	 
-							  	  price = '$price', 
-							  	  description = '$description'  
-							  	   
-							  WHERE productName = '$productName'";
-				}
-			
-
-				
-				$result = $this->db->update($query);
-				if($result){
-					$alert = "<span class='text-success >Update thành công</span";
-					return $alert;
-
-				}
-				else{
-					$alert = "<span class='text-success >Update không thành công</span";
-					return $alert;	
-				}
-            }
+        
+            
 			
 			
         
